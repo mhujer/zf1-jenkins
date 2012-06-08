@@ -29,8 +29,7 @@ class ZfPhpUnitTask extends Task
             $reportFilename = str_replace('/', '-', $file);
             $reportFilename = str_replace('php', 'xml', $reportFilename);
             echo "Executing {$file} -> {$reportFilename}" . PHP_EOL;
-            //echo ($this->phpunitExecutable . ' --stderr -d memory_limit=-1 --log-junit ' . $this->testsReportDir . $reportFilename . ' ' . escapeshellarg($file));
-            shell_exec($this->$phpunitExecutable . ' --stderr -d memory_limit=-1 --log-junit ' . $this->testsReportDir . $reportFilename . ' ' . escapeshellarg($file));
+            shell_exec($this->phpunitExecutable . ' --stderr -d memory_limit=-1 --log-junit ' . $this->testsReportDir . $reportFilename . ' ' . escapeshellarg($file));
             echo PHP_EOL;
         }
     }
