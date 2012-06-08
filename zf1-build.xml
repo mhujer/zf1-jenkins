@@ -25,7 +25,7 @@
         <phplint haltonfailure="true" level="info">
             <fileset refid="bin"/>
             <fileset refid="resources"/>
-            <!--<fileset refid="src"/>-->
+            <fileset refid="src"/>
             <fileset refid="tests"/>
         </phplint>
     </target>
