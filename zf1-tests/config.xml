@@ -22,7 +22,7 @@
     <xunit>
       <types>
         <PHPUnitJunitHudsonTestType>
-          <pattern>phpunit*.xml</pattern>
+          <pattern>*.xml</pattern>
           <faildedIfNotNew>true</faildedIfNotNew>
           <deleteOutputFiles>true</deleteOutputFiles>
           <stopProcessingIfError>true</stopProcessingIfError>
