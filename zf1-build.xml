@@ -1,0 +1,40 @@
+<project name="zf" default="hello">
+    <target name="build" depends="phplint"/>
+    
+    <target name="hello">
+        <echo message="Hello from ZF1 CI!"/>
+    </target>
+    
+    <resolvepath propertyName="zf" file="${project.basedir}/zf1-repo/"/>
+  
+    <fileset id="src" dir="${zf}/library/Zend/">
+        <include name="**/*.php"/>
+    </fileset>
+    <fileset id="tests" dir="${zf}/tests/">
+        <include name="**/*.php"/>
+        <exclude name="**/ParseError.php"/> <!-- tests\Zend\Loader\_files\ParseError.php -->
+    </fileset>
+    <fileset id="bin" dir="${zf}/bin/">
+        <include name="**/*.php"/>
+    </fileset>
+    <fileset id="resources" dir="${zf}/resources/">
+        <include name="**/*.php"/>
+    </fileset>
+    
+    <target name="phplint" description="Check with PHP Lint">
+        <phplint haltonfailure="true" level="info">
+            <fileset refid="bin"/>
+            <fileset refid="resources"/>
+            <!--<fileset refid="src"/>-->
+            <fileset refid="tests"/>
+        </phplint>
+    </target>
+    
+    <taskdef name="zfphpunit" classname="ZfPhpUnitTask" />
+    
+    <target name="phpunit" description="Run PHPUnit tests">
+        <zfphpunit/>
+    </target>
+    
+    
+</project>
