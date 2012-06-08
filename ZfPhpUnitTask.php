@@ -2,9 +2,24 @@
 require_once "phing/Task.php";
 class ZfPhpUnitTask extends Task
 {
-    protected $phpunitExecutable = 'phpunit34';
-    protected $testsDir = 'i:\xampp\zf\tests\\';
-    protected $testsReportDir = 'i:\Jenkins\data\jobs\zf1-tests\workspace\\';
+    protected $phpunitExecutable = null;
+    protected $testsDir = null;
+    protected $testsReportDir = null;
+    
+    public function setPhpunitexecutable($phpunitExecutable)
+    {
+    	$this->phpunitExecutable = $phpunitExecutable;
+    }
+    
+    public function setTestsdir($testsDir)
+    {
+    	$this->testsDir = $testsDir;
+    }
+    
+    public function setTestsreportdir($testsReportDir)
+    {
+    	$this->testsReportDir = $testsReportDir;
+    }
     
     /**
      * The init method: Do init steps.

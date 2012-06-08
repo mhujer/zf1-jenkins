@@ -33,7 +33,12 @@
     <taskdef name="zfphpunit" classname="ZfPhpUnitTask" />
     
     <target name="phpunit" description="Run PHPUnit tests">
-        <zfphpunit/>
+        <delete>
+            <fileset dir="${project.basedir}/zf1-tests/workspace/">
+                <include name="**/*.xml"/>
+            </fileset>
+        </delete>
+        <zfphpunit phpunitExecutable="phpunit34" testsdir="${zf}/tests" testsreportdir="${project.basedir}/zf1-tests/workspace/"/>
     </target>
     
     
