@@ -22,6 +22,10 @@
     </fileset>
     
     <target name="phplint" description="Check with PHP Lint">
+        <exec command="php -v" logoutput="true"/>
+        <exec command="uname" logoutput="true"/>
+        <exec command="uname -r" logoutput="true"/>
+        
         <phplint haltonfailure="true" level="info">
             <fileset refid="bin"/>
             <fileset refid="resources"/>
