@@ -45,5 +45,16 @@
         <zfphpunit phpunitExecutable="phpunit34" testsdir="${zf}/tests" testsreportdir="${project.basedir}/zf1-tests/workspace/"/>
     </target>
     
+    <target name="phpcpd" description="PHPCPD">
+        <delete>
+            <fileset dir="${project.basedir}/zf1-quality/workspace/">
+                <include name="**/pmd-cpd.xml"/>
+            </fileset>
+        </delete>
+        <phpcpd>
+            <fileset refid="src"/>
+            <formatter type="pmd" outfile="${project.basedir}/zf1-quality/workspace/pmd-cpd.xml"/>
+        </phpcpd>
+    </target>
     
 </project>
