@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ruleset name="ZF1 Custom Standard">
+    <rule ref="Zend"/>
+    
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="200"/>
+            <property name="absoluteLineLimit" value="300"/>
+        </properties>
+    </rule>
+</ruleset>
+    
