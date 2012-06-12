@@ -49,6 +49,14 @@
         </org.jenkinsci.plugins.xunit.threshold.SkippedThreshold>
       </thresholds>
     </xunit>
+    <hudson.tasks.BuildTrigger>
+      <childProjects>zf1-quality</childProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+      </threshold>
+    </hudson.tasks.BuildTrigger>
   </publishers>
   <buildWrappers/>
 </project>
