@@ -32,6 +32,8 @@
             <fileset refid="src"/>
             <fileset refid="tests"/>
         </phplint>
+        
+        <exec command="phploc --log-csv ${project.basedir}/zf1/workspace/phploc.csv ${zf}/library/Zend/" logoutput="true" />
     </target>
     
     <taskdef name="zfphpunit" classname="ZfPhpUnitTask" />
