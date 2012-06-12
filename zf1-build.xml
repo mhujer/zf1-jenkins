@@ -57,4 +57,17 @@
         </phpcpd>
     </target>
     
+    <target name="phpcs" description="PHPCS">
+        <delete>
+            <fileset dir="${project.basedir}/zf1-quality/workspace/">
+                <include name="**/checkstyle-phpcs.xml"/>
+            </fileset>
+        </delete>
+        <phpcodesniffer standard="Zend">
+            <fileset refid="src"/>
+            <formatter type="default" usefile="false"/>
+            <formatter type="checkstyle" outfile="${project.basedir}/zf1-quality/workspace/checkstyle-phpcs.xml"/>
+        </phpcodesniffer>
+    </target>
+    
 </project>
