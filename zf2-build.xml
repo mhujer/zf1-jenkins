@@ -1,0 +1,51 @@
+<project name="zf2" default="hello">
+    <target name="build" depends="phplint"/>
+    
+    <target name="hello">
+        <echo message="Hello from ZF2 CI!"/>
+    </target>
+    
+    <resolvepath propertyName="zf2" file="${project.basedir}/zf2/workspace/"/>
+  
+    <fileset id="src" dir="${zf2}/library/Zend/">
+        <include name="**/*.php"/>
+    </fileset>
+    <fileset id="tests" dir="${zf2}/tests/">
+        <include name="**/*.php"/>
+        <exclude name="**/ProvidesEvents.php"/> --> <!-- library/Zend/EventManager/ProvidesEvents.php -->
+    </fileset>
+    <fileset id="bin" dir="${zf2}/bin/">
+        <include name="**/*.php"/>
+    </fileset>
+    <fileset id="resources" dir="${zf2}/resources/languages/">
+        <include name="**/*.php"/>
+    </fileset>
+    
+    <target name="phplint" description="Check with PHP Lint">
+        <exec command="php -v" logoutput="true"/>
+        <exec command="uname" logoutput="true"/>
+        <exec command="uname -r" logoutput="true"/>
+        
+        <phplint haltonfailure="true" level="info">
+            <fileset refid="bin"/>
+            <fileset refid="resources"/>
+            <fileset refid="src"/>
+            <fileset refid="tests"/>
+        </phplint>
+        
+        <exec command="phploc --log-csv ${project.basedir}/zf2/workspace/phploc.csv ${zf2}/library/Zend/" logoutput="true" />
+    </target>
+    
+    <target name="phpcpd" description="PHPCPD">
+        <delete>
+            <fileset dir="${project.basedir}/zf2-quality/workspace/">
+                <include name="**/pmd-cpd.xml"/>
+            </fileset>
+        </delete>
+        <phpcpd>
+            <fileset refid="src"/>
+            <formatter type="pmd" outfile="${project.basedir}/zf2-quality/workspace/pmd-cpd.xml"/>
+        </phpcpd>
+    </target>
+    
+</project>
