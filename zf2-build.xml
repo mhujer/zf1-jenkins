@@ -9,10 +9,13 @@
   
     <fileset id="src" dir="${zf2}/library/Zend/">
         <include name="**/*.php"/>
+        <exclude name="**/ProvidesEvents.php"/> <!-- trait: library/Zend/EventManager/ProvidesEvents.php -->
     </fileset>
     <fileset id="tests" dir="${zf2}/tests/">
         <include name="**/*.php"/>
-        <exclude name="**/ProvidesEvents.php"/> --> <!-- library/Zend/EventManager/ProvidesEvents.php -->
+        <exclude name="**/ParseError.php"/> <!-- Parse error: tests/Zend/Loader/_files/ParseError.php -->
+        <!-- Fatal error: Default value for parameters with a class type hint can only be NULL in tests/Zend/Code/TestAsset/BarClass.php on line 28 -->
+        <exclude name="**/BarClass.php"/> <!-- tests/Zend/Code/TestAsset/BarClass.php -->
     </fileset>
     <fileset id="bin" dir="${zf2}/bin/">
         <include name="**/*.php"/>
@@ -42,7 +45,7 @@
                 <include name="**/pmd-cpd.xml"/>
             </fileset>
         </delete>
-        <phpcpd>
+        <phpcpd minlines="10">
             <fileset refid="src"/>
             <formatter type="pmd" outfile="${project.basedir}/zf2-quality/workspace/pmd-cpd.xml"/>
         </phpcpd>
